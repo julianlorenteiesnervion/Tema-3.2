@@ -2,7 +2,7 @@ package ejerciciosstring;
 
 import java.util.*;
 
-public class Ejer15 {
+public class Ejer16 {
 	// Método random
 	static Random random = new Random();
 
@@ -37,6 +37,19 @@ public class Ejer15 {
 		return randomizedPhrase;
 	}
 	
+	// Función para imprimir los caracteres del intento que están en la frase original
+	static void printFoundChars(String phrase, String attempt) {
+		System.out.print("Se han encontrado los siguientes caracteres: ");
+		for (int i = 0; i < attempt.length(); i++) {
+			/* Si se encuentra el caracter correspondiente del
+			 * intento en la frase original, imprimimos el caracter */
+			if (phrase.indexOf(attempt.charAt(i)) != -1) {
+				System.out.print(attempt.charAt(i) + " ");
+			}
+		}
+		System.out.print("\n"); // Salto de línea
+	}
+	
 	public static void main(String[] args) {
 		Scanner reader = new Scanner(System.in);
 		
@@ -61,6 +74,8 @@ public class Ejer15 {
 		
 		// Mientras el intento sea distinto a la frase original, volvemos a solicitar otro intento
 		while (!attempt.equals(phrase)) {
+			printFoundChars(phrase, attempt); // Imprimimos los caracteres encontrados
+			
 			System.out.print("Inténtalo otra vez: ");
 			attempt = reader.nextLine();
 		}
